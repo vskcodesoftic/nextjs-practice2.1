@@ -18,6 +18,14 @@ export async function getStaticProps(){
   const filePath = path.join(process.cwd(), 'data', 'DummyBackend.json');
   const fileData = await fs.readFile(filePath);
   const data = JSON.parse(fileData);
+
+  if(!data) {
+    return {
+      redirect : {
+        destination : '/'
+      }
+    }
+  }
   return { props :{
      products: data.products,
      
