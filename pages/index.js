@@ -13,6 +13,7 @@ function HomePage(props) {
 }
 
 export async function getStaticProps(){
+  console.log('..regenrating')
   const fs = require('fs/promises'); // LOOK THIS
   const filePath = path.join(process.cwd(), 'data', 'DummyBackend.json');
   const fileData = await fs.readFile(filePath);
@@ -21,6 +22,8 @@ export async function getStaticProps(){
      products: data.products,
      
   },
+  //isr revalidate 
+  revalidate : 12
 };
 }
 
